@@ -9,7 +9,7 @@
 #include <sched.h>
 #include <string.h>
 #include <stdlib.h>
-#include "dos.h"
+#include <dos.h>
 
 
 #define CLOCK_PIN	7
