@@ -9,6 +9,7 @@
 #include <sched.h>
 #include <string.h>
 #include <stdlib.h>
+#include "dos.h"
 
 
 #define CLOCK_PIN	7
@@ -166,7 +167,7 @@ unsigned long read_cnt(long offset, int argc) {
 
 
   while( DT_R ); 
-	int b;
+	
 	b++;
 	b++;
 	b++;
