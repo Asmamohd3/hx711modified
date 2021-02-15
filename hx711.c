@@ -9,10 +9,10 @@
 #include <sched.h>
 #include <string.h>
 #include <stdlib.h>
-#include <uinstd.h>
 
-#define CLOCK_PIN	31
-#define DATA_PIN	29
+
+#define CLOCK_PIN	7
+#define DATA_PIN	11
 #define N_SAMPLES	64
 #define SPREAD		10
 
@@ -74,13 +74,13 @@ void 	unpull_pins()
 int main(int argc, char **argv)
 {
   int i, j;
-  long tmp=0;
+  
   long tmp_avg=0;
   long tmp_avg2;
   long offset=0;
   float filter_low, filter_high;
   float spread_percent = SPREAD / 100.0 /2.0;
-  int b;
+  
   int nsamples=N_SAMPLES;
   long samples[nsamples];
 
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
     exit(255);
 
   }
-  printf("%d\n", (tmp_avg2 / j) - offset);
+  printf("%ld\n", (tmp_avg2 / j) - offset);
 
 //  printf("average within %f percent: %d from %d samples, original: %d\n", spread_percent*100, (tmp_avg2 / j) - offset, j, tmp_avg - offset);
   unpull_pins();
@@ -135,9 +135,9 @@ int main(int argc, char **argv)
 
 void reset_converter(void) {
 	SCK_ON;
-	usleep(60);
+      delay(60);
 	SCK_OFF;
-	usleep(60);
+	delay(60);
 }
 
 void set_gain(int r) {
@@ -166,6 +166,7 @@ unsigned long read_cnt(long offset, int argc) {
 
 
   while( DT_R ); 
+	int b;
 	b++;
 	b++;
 	b++;
@@ -213,7 +214,7 @@ if (argc < 2 ) {
    printf("%d ", ((count-offset) & ( 1 << i )) != 0 );
   }
 
-  printf("n: %10d     -  ", count - offset);
+  printf("n: %10ld     -  ", count - offset);
   printf("\n"); 
 }
 
